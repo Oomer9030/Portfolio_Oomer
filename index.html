@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M.Oomer Habib Moussa Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-rgb: 0, 171, 240;
+            --primary: #00abf0;
+            --primary-hover: #38c5ff;
+            --secondary-rgb: 0, 119, 182;
+            --secondary: #0077b6;
+            --accent-rgb: 0, 171, 240;
+            --accent: #00abf0;
+            --bg-dark: #081b29;
+            --second-bg: #112e42;
+            --bg-card: rgba(17, 46, 66, 0.85);
+            --text-primary: #ededed;
+            --text-secondary: #9fb9c9;
+            --border: #00abf0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Geometric Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200vw;
+            height: 200vh;
+            background-image:
+                linear-gradient(rgba(0, 171, 240, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 171, 240, 0.06) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -2;
+            animation: panGrid 40s linear infinite;
+        }
+
+        @keyframes panGrid {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-50px, -50px);
+            }
+        }
+
+        .geo-circle {
+            position: absolute;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+            animation: slowSpin 20s linear infinite;
+        }
+
+        @keyframes slowSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .geo-lines {
+            position: absolute;
+            background: repeating-linear-gradient(45deg,
+                    var(--primary) 0,
+                    var(--primary) 2px,
+                    transparent 2px,
+                    transparent 15px);
+            opacity: 0.2;
+            z-index: -1;
+            pointer-events: none;
+            background-size: 200% 200%;
+            animation: panLines 30s linear infinite;
+        }
+
+        @keyframes panLines {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 100px 100px;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 1rem rgba(var(--primary-rgb), 0.6);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.2rem;
+            background: rgba(var(--primary-rgb), 0.1);
+            border: 1px solid rgba(var(--primary-rgb), 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .badge::before {
+            content: '●';
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradient-text {
+            color: var(--primary);
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--primary);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 1rem var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 2rem var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 2rem var(--primary);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--second-bg);
+            border-radius: 0.6rem;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 0 1.5rem rgba(var(--primary-rgb), 0.4);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .section {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--second-bg);
+            border-radius: 0.6rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 0 1.8rem rgba(var(--primary-rgb), 0.4);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            filter: grayscale(0%);
+        }
+
+        .project-image::before {
+            display: none;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(var(--primary-rgb), 0.1);
+            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .tag.ml {
+            background: rgba(var(--secondary-rgb), 0.1);
+            border-color: rgba(var(--secondary-rgb), 0.2);
+            color: var(--secondary);
+        }
+
+        .tag.nlp {
+            background: rgba(var(--accent-rgb), 0.1);
+            border-color: rgba(var(--accent-rgb), 0.2);
+            color: var(--accent);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--second-bg);
+            border-radius: 0.6rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 0 1.5rem rgba(var(--primary-rgb), 0.4);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 1rem rgba(var(--primary-rgb), 0.5);
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--primary);
+            border-radius: 0.6rem;
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 0 2rem rgba(var(--primary-rgb), 0.25);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(8, 27, 41, 0.97);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 18, 28, 0.92);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid var(--primary);
+            border-radius: 0.8rem;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 0 2.5rem rgba(var(--primary-rgb), 0.4);
+            animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .modal-tech {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-details {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-features {
+            list-style-type: none;
+        }
+
+        .modal-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+        }
+
+        .modal-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        /* About Section */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-summary {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .competencies-list {
+            list-style: none;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .competencies-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .competencies-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 900px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="geo-circle" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+    <div class="geo-circle" style="width: 250px; height: 250px; top: 40%; left: -100px; animation-direction: reverse;">
+    </div>
+    <div class="geo-lines" style="width: 200px; height: 200px; top: 10%; right: 10%;"></div>
+    <div class="geo-lines" style="width: 150px; height: 150px; bottom: 20%; left: 5%;"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Portfolio Mohamad Oomer Habib Moussa</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="badge">Available for new projects</div>
+            <h1>
+                Mohamad Oomer Habib Moussa<br>
+                <span class="gradient-text">Software & AI Developer</span>
+            </h1>
+            <p class="hero-subtitle">
+                I develop custom Python applications, AI tools, and enterprise management software that solve real-world
+                problems.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work →</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-header reveal">
+            <h2 class="section-title gradient-text">About Me</h2>
+            <p class="section-subtitle">
+                Bridging the gap between hands-on expertise and data-driven solutions.
+            </p>
+        </div>
+        <div class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">
+                With a unique background in industrial flexography and pre-press operations, I have transitioned my focus toward building intelligent software solutions. I specialize in leveraging Python, data analysis, and modern web frameworks to automate workflows, build custom dashboards, and optimize production environments.
+            </p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-header reveal">
+            <h2 class="section-title gradient-text">Featured Projects</h2>
+            <p class="section-subtitle">
+                A collection of my Python and AI projects, including custom enterprise management software.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag ml">SQLite</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">Material Management Pro</h3>
+                    <p class="project-description">
+                        A comprehensive desktop application for material receipt, inventory tracking, and data
+                        management. Features include SQLite database integration and customized installers.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('Material Management Pro')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag nlp">Planning</span>
+                        <span class="tag">Pro</span>
+                    </div>
+                    <h3 class="project-title">CombControl Planning Pro</h3>
+                    <p class="project-description">
+                        A specialized enterprise planning system built to streamline scheduling and management
+                        workflows, with robust reporting and data entry capabilities.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('CombControl Planning Pro')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Forms</span>
+                        <span class="tag nlp">Data Entry</span>
+                        <span class="tag">UI</span>
+                    </div>
+                    <h3 class="project-title">Plate Making Data Entry Form</h3>
+                    <p class="project-description">
+                        A customized interface designed for digital plate making, facilitating rapid data entry,
+                        tracking, and management for Pre-Press departments.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('Plate Making Data Entry Form')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Android</span>
+                        <span class="tag ml">Backend</span>
+                        <span class="tag nlp">Dashboard</span>
+                    </div>
+                    <h3 class="project-title">Finishing and Packing System</h3>
+                    <p class="project-description">
+                        A comprehensive full-stack solution featuring an Android application, a web dashboard, and a
+                        robust backend database to streamline and track finishing and packing operations.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('Finishing and Packing System')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">PWA</span>
+                        <span class="tag ml">JavaScript</span>
+                        <span class="tag nlp">Mobile</span>
+                    </div>
+                    <h3 class="project-title">Budget Tracker PWA</h3>
+                    <p class="project-description">
+                        A mobile-optimized Progressive Web App for tracking monthly budgets and daily expenses with
+                        offline support and local storage.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('Budget Tracker PWA')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: PollenAI Desktop -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag ml">FastAPI</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">PollenAI Desktop</h3>
+                    <p class="project-description">
+                        A powerful self-hosted AI assistant with multi-turn chat, autonomous deep research, RAG document
+                        retrieval, and tool ecosystems.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('PollenAI Desktop')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Dashboard -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag ml">Vite</span>
+                        <span class="tag nlp">Dashboard</span>
+                    </div>
+                    <h3 class="project-title">CombControl Dashboard</h3>
+                    <p class="project-description">
+                        A modern React-based web dashboard for CombControl Planning Pro, featuring interactive charts,
+                        robust job management, and dynamic reporting.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('CombControl Dashboard')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: NC Portal -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag ml">SQL Server</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">NC Portal — Non-Conformance Management</h3>
+                    <p class="project-description">
+                        A desktop application for logging, investigating, and reporting product non-conformances
+                        end to end — from sales claim through QC investigation, closure, and KPI reporting.
+                    </p>
+                    <div class="project-links">
+                        <a href="javascript:void(0)" onclick="openModal('NC Portal')"
+                            class="project-link">Details →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="section-header reveal">
+            <h2 class="section-title gradient-text">Technical Expertise</h2>
+            <p class="section-subtitle">
+                Technologies and frameworks I use to build intelligent applications.
+            </p>
+        </div>
+
+        <div class="about-container reveal"
+            style="margin-bottom: 3rem; grid-template-columns: 1fr; border: 1px solid var(--border); padding: 2rem; border-radius: 15px; background: var(--bg-card);">
+            <div class="about-text" style="text-align: left;">
+                <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.4rem;">Who I Am</h3>
+                <p>I’m someone who loves tackling challenges with data and finding creative solutions. I have a natural
+                    curiosity for how things work, and I’m always looking for ways to apply what I learn to make a real
+                    impact. Right now, I’m diving deep into the world of data analysis, programming with Python, and
+                    exploring the fascinating potential of AI and machine learning.</p>
+
+                <p>I’m passionate about learning, whether it’s discovering new tools like Power BI, building practical
+                    systems in flexographic printing, or finding smarter ways to solve problems. I’ve always believed
+                    that thinking outside the box can lead to some of the best innovations, and I’m always excited to
+                    take on new opportunities to stretch my skills.</p>
+
+                <div class="about-summary" style="margin-top: 2rem; background: transparent; border: none; padding: 0;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Professional Summary:</h3>
+                    <p style="margin-bottom: 0;">Results-driven Flexography Plate Maker and Pre-Press Operator with a
+                        strong blend of hands-on printing expertise and data-driven problem-solving. Experienced in
+                        automating workflows, analyzing production data, and creating actionable insights using Python,
+                        Power BI, and Tableau. Passionate about leveraging technology and analytics to enhance
+                        efficiency, quality, and innovation in label printing processes.</p>
+                </div>
+            </div>
+
+            <div class="about-competencies" style="text-align: left; margin-top: 1.5rem;">
+                <ul class="competencies-list" style="background: transparent; border: none; padding: 0;">
+                    <h3 style="color: var(--accent); margin-bottom: 1.5rem;">Core Competencies:</h3>
+                    <li>Flexography Plate Making & Pre-Press Expertise</li>
+                    <li>Data Analysis, Automation & Visualization (Python, Power BI, Tableau)</li>
+                    <li>Workflow Optimization & Process Improvement</li>
+                    <li>Quality Control & Defect Reduction</li>
+                    <li>Applied AI & Predictive Analytics in Industrial Settings</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card reveal">
+                <div class="skill-icon">🧠</div>
+                <h3 class="skill-name">Machine Learning</h3>
+                <p class="skill-desc">TensorFlow, PyTorch, Scikit-learn, and custom model development</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">💬</div>
+                <h3 class="skill-name">Natural Language Processing</h3>
+                <p class="skill-desc">Transformers, GPT, BERT, sentiment analysis, and chatbots</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">👁️</div>
+                <h3 class="skill-name">Computer Vision</h3>
+                <p class="skill-desc">OpenCV, image recognition, object detection, and generation</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">⚡</div>
+                <h3 class="skill-name">Full Stack Development</h3>
+                <p class="skill-desc">React, Node.js, Python, cloud deployment, and API design</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">📊</div>
+                <h3 class="skill-name">Data Visualization</h3>
+                <p class="skill-desc">Power BI, Tableau, interactive dashboards, and business intelligence</p>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">🤖</div>
+                <h3 class="skill-name">AI Automation</h3>
+                <p class="skill-desc">Claude MCP, Agentic Workflows, LLM integrations, and custom tool use</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-box reveal">
+            <h2 class="contact-title gradient-text">Let's Build Something Amazing</h2>
+            <p class="contact-text">
+                Have an AI project in mind? I'm always excited to work on innovative ideas.
+                Reach out and let's discuss how we can bring your vision to life.
+            </p>
+            <div class="cta-buttons" style="justify-content: center; margin-bottom: 2rem;">
+                <a href="mailto:[umair71194@gmail.com]" class="btn btn-primary" style="margin: 0; width: auto;">Send
+                    Email →</a>
+                <a href="tel:59030340" class="btn btn-secondary" style="margin: 0; width: auto;">Call: 59030340</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/Oomer9030" class="social-link" title="GitHub">GH</a>
+                <a href="https://www.linkedin.com/in/habib-moussa-mohamad-oomer-300134222/" class="social-link"
+                    title="LinkedIn">LI</a>
+                <a href="#" class="social-link" title="Twitter">TW</a>
+                <a href="#" class="social-link" title="Dribbble">DR</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p> 2026 AI Developer Portfolio. Built with passion and code.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            let delay = 0;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, delay);
+                    // Add stagger if part of a grid
+                    if (entry.target.closest('.projects-grid') || entry.target.closest('.skills-grid') || entry.target.closest('.about-container')) {
+                        delay += 100;
+                    }
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.style.background = 'rgba(8, 27, 41, 0.97)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 171, 240, 0.15)';
+            } else {
+                navbar.style.background = 'rgba(8, 27, 41, 0.85)';
+                navbar.style.boxShadow = 'none';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const projectData = {
+            'Material Management Pro': {
+                title: 'Material Management Pro',
+                features: [
+                    'Purple-Themed Modern UI with PyQt6',
+                    'Direct Microsoft SQL Server Integration via pyodbc',
+                    'Automated Database Table Creation for "MaterialReceipts"',
+                    'Real-time Search, Filtering, and Pagination (50 rows/page)',
+                    'Robust Data Validation and Soft Delete Mechanisms',
+                    'Export to Excel & Role-based Data Access'
+                ],
+                tech: 'Python, PyQt6, MS SQL Server, pandas',
+                details: 'Material Management Pro is an enterprise-grade desktop application designed for streamlined receiving of materials from the store.<br><br>The system connects directly to a Microsoft SQL Server database, automatically handling table creation and schema definitions on launch if they don\'t exist. It features an incredibly intuitive "Purple-Themed" modern UI, built with PyQt6, providing staff with quick keyboard shortcuts for rapid data entry. Administrators can view, filter, sort, and manage hundreds of records efficiently thanks to a built-in pagination system and real-time search functionality. It also includes safe "soft delete" capabilities, ensuring data integrity while keeping the interface clean.'
+            },
+            'CombControl Planning Pro': {
+                title: 'CombControl Planning Pro',
+                features: [
+                    'Advanced Security with Bcrypt Password Hashing',
+                    'Comprehensive SQL Injection Protection & Parameterized Queries',
+                    'Unauthenticated HTTP API with Token Binding',
+                    'Desktop Application Client (PyQt6)',
+                    'Cross-platform MCP Server Integrations'
+                ],
+                tech: 'Python, PyQt6, MS SQL Server, FastAPI',
+                details: 'CombControl Planning Pro is a specialized enterprise planning system that focuses on high-security standards and data integrity.<br><br>Developed after a rigorous security review, it features state-of-the-art protections against SQL injection using parameterized queries, strictly allow-listed SQL identifiers, and secure schema migrations. User authentication is secured using bcrypt password hashing. Beyond its desktop interface, the system exposes a secure, token-authenticated HTTP API and a Model Context Protocol (MCP) server, allowing it to seamlessly integrate with other automated tools and reporting dashboards.'
+            },
+            'Plate Making Data Entry Form': {
+                title: 'Plate Making Data Entry Form',
+                features: [
+                    'Digital Data Entry Workflows for Pre-Press',
+                    'Interactive Dashboard Charts and Analytics',
+                    'Automated PDF Report Generation',
+                    'Scheduled Email Notifications for Batches',
+                    'MS SQL Server Storage and Retrieval'
+                ],
+                tech: 'Python, PySide6, MS SQL Server, ReportLab',
+                details: 'This tool is a customized graphical interface specifically designed to modernize digital plate making workflows in Pre-Press departments.<br><br>By replacing manual, paper-based tracking, it facilitates rapid digital data entry and instant synchronization with an MS SQL Server backend. The application features built-in analytics dashboards with interactive charts for visualizing production trends. Additionally, it streamlines reporting by automatically generating detailed PDF documents of daily/weekly batches and dispatching scheduled email notifications to stakeholders, ensuring everyone is kept up to date on production progress.'
+            },
+            'Finishing and Packing System': {
+                title: 'Finishing and Packing System',
+                features: [
+                    'Android App for On-the-floor Data Capture',
+                    'FastAPI Python Backend Architecture',
+                    'JWT (JSON Web Token) Authentication',
+                    'Docker Containerized Deployment',
+                    'Offline-first Sync Capabilities'
+                ],
+                tech: 'Android (Java/Kotlin), Python (FastAPI), Docker',
+                details: 'The Finishing and Packing System is a complete full-stack solution designed for high-paced factory floors. It features an Android mobile application used by operators across 8 different finishing machines.<br><br>The mobile app connects securely to a robust Python FastAPI backend hosted on the local network via Wi-Fi. It uses JWT-based authentication for role-based access control. To handle poor network connectivity on the factory floor, the system utilizes an offline-first architecture that stores data locally and automatically syncs it to the Microsoft SQL Server backend when a connection is re-established. The entire backend stack is containerized using Docker for easy deployment and scaling.'
+            },
+            'Budget Tracker PWA': {
+                title: 'Budget Tracker PWA',
+                features: [
+                    'Monthly Budget Goal Planning',
+                    'Detailed Income & Expense Tracking',
+                    'Real-time Balance and Progress Indicators',
+                    'Progressive Web App (PWA) Offline Support',
+                    'Modern Dark Theme UI with Animations'
+                ],
+                tech: 'HTML, CSS, Vanilla JavaScript (PWA)',
+                details: 'The Budget Tracker is a sleek, mobile-optimized Progressive Web App (PWA) designed to help users take control of their finances. It tracks daily expenses and income in Mauritian Rupee (MUR).<br><br>Users can set a monthly budget limit and visually track their remaining balance in real-time through intuitive UI indicators. Transactions can be categorized and filtered easily. Thanks to its PWA architecture, all financial data is stored securely in the local storage of the user\'s device, ensuring complete privacy. Furthermore, the app works entirely offline and can be installed directly to a mobile device\'s home screen, behaving exactly like a native app without requiring an App Store download.'
+            },
+            'PollenAI Desktop': {
+                title: 'PollenAI Desktop',
+                features: [
+                    'Multi-turn AI Chat with Provider Flexibility',
+                    'Autonomous Deep Research capabilities',
+                    'Document Upload and RAG Retrieval',
+                    'Persistent Persona & Custom Agent Skills',
+                    'Local Desktop Wrapper via PyInstaller'
+                ],
+                tech: 'Python, FastAPI, PyQt/PyInstaller, Vector DBs',
+                details: 'PollenAI is an advanced, self-hosted AI assistant designed to maintain absolute data privacy. It offers a comprehensive suite of features, including multi-turn conversations powered by any major LLM provider (OpenAI, Anthropic, Ollama, etc.), and autonomous multi-step "Deep Research" capabilities pulling from web search, academic papers, and Youtube.<br><br>The platform includes robust document retrieval using Hybrid RAG (Semantic + Keyword), an integrated calendar, and customizable agent skills allowing for isolated subagent delegation. The desktop client wraps the FastAPI backend into a sleek Windows tray application, providing immediate access to a powerful AI ecosystem right from your desktop.'
+            },
+            'CombControl Dashboard': {
+                title: 'CombControl Dashboard',
+                features: [
+                    'Built with React, Vite, and Recharts',
+                    'Interactive Data Visualization and Charts',
+                    'Job Delivery and Planning Management',
+                    'Dark/Light Theme Support',
+                    'Seamless API Integration'
+                ],
+                tech: 'React, Vite, JavaScript, CSS',
+                details: 'This is the front-end web dashboard for the CombControl Planning Pro system.<br><br>Developed using React and Vite, it provides a high-performance, responsive user interface for managing printing jobs and analyzing production metrics. The dashboard features interactive charts built with Recharts, comprehensive job management views, and a modern aesthetic with dynamic theming. It seamlessly connects to the CombControl backend API to ensure real-time data synchronization.'
+            },
+            'NC Portal': {
+                title: 'NC Portal — Non-Conformance Management System',
+                features: [
+                    'Role-based Secure Login (Admin / Standard) with Per-tab Permissions',
+                    'Auto-generated NC Numbers & PJC Auto-lookup from the Production Planner',
+                    'Full QC Investigation: Root Cause, Corrective & Preventive Actions, Cost & Quantity Impact',
+                    '"Not an NC" Audit Outcome, Excluded from KPIs',
+                    'Live Dashboard Tiles & Monthly KPI Reports with Target Breach Highlighting',
+                    'One-click Branded "Non Conformity Report" PDF & CSV Export'
+                ],
+                tech: 'Python, CustomTkinter, MS SQL Server (pyodbc), ReportLab',
+                details: 'NC Portal is an enterprise desktop application built for A World of Labels (Labelling Industries LTD) to manage product non-conformances end to end — from the moment a sales claim is raised, through QC investigation, closure, and KPI reporting. It connects directly to the company\'s Microsoft SQL Server database.<br><br>Sales staff log claims with auto-generated NC numbers and a PJC auto-lookup that pulls Client, Product No, and Total Order Quantity straight from the Production Planner. QC then records type (Internal/External), reasons, root cause, corrective and preventive actions, cost, and quantity impacted — with a "Not an NC" outcome that keeps invalid claims for audit while excluding them from KPIs. A live dashboard surfaces colour-coded status tiles, and monthly KPI reports automatically highlight any category that breaches its target. Closed NCs export as one-click official "Non Conformity Report" PDFs matching the company branding, alongside CSV exports, light/dark theming, and admin-controlled user management.'
+            }
+        };
+
+        function openModal(projectName) {
+            const data = projectData[projectName];
+            if (!data) return;
+
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalTech').innerText = data.tech;
+            document.getElementById('modalDetails').innerHTML = data.details;
+
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            data.features.forEach(f => {
+                let li = document.createElement('li');
+                li.innerText = f;
+                featuresList.appendChild(li);
+            });
+
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            let modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" class="modal-title">Project Title</h2>
+            <div id="modalTech" class="modal-tech">Technologies</div>
+            <p id="modalDetails" class="modal-details">Project details go here...</p>
+            <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Key Features:</h3>
+            <ul id="modalFeatures" class="modal-features">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
