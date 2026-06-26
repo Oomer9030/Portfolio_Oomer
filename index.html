@@ -795,32 +795,6 @@
             color: var(--secondary);
         }
 
-        /* Modal Gallery */
-        .modal-gallery {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-        }
-
-        .modal-gallery img {
-            max-height: 400px;
-            border-radius: 8px;
-            border: 1px solid rgba(var(--primary-rgb), 0.3);
-            object-fit: contain;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-gallery::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .modal-gallery::-webkit-scrollbar-thumb {
-            background: rgba(var(--primary-rgb), 0.5);
-            border-radius: 4px;
-        }
-
         /* About Section */
         .about-container {
             display: grid;
@@ -1302,11 +1276,6 @@
         const projectData = {
             'Material Management Pro': {
                 title: 'Material Management Pro',
-                images: [
-                    'assets/material_management/Screenshot 2026-06-26 092357.png',
-                    'assets/material_management/Screenshot 2026-06-26 092422.png',
-                    'assets/material_management/Screenshot 2026-06-26 092441.png'
-                ],
                 features: [
                     'Purple-Themed Modern UI with PyQt6',
                     'Direct Microsoft SQL Server Integration via pyodbc',
@@ -1332,15 +1301,6 @@
             },
             'Plate Making Data Entry Form': {
                 title: 'Plate Making Data Entry Form',
-                images: [
-                    'assets/plate_making/Calculator.png',
-                    'assets/plate_making/Dashboard.png',
-                    'assets/plate_making/Designe Dept.png',
-                    'assets/plate_making/Entry Tab.png',
-                    'assets/plate_making/Plate Type.png',
-                    'assets/plate_making/Report.png',
-                    'assets/plate_making/Setting.png'
-                ],
                 features: [
                     'Digital Data Entry Workflows for Pre-Press',
                     'Interactive Dashboard Charts and Analytics',
@@ -1389,16 +1349,6 @@
             },
             'CombControl Dashboard': {
                 title: 'CombControl Dashboard',
-                images: [
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093335.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093418.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093449.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093509.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093527.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093546.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093604.png',
-                    'assets/combcontrol_dashboard/Screenshot 2026-06-26 093722.png'
-                ],
                 features: [
                     'Built with React, Vite, and Recharts',
                     'Interactive Data Visualization and Charts',
@@ -1411,19 +1361,6 @@
             },
             'NC Portal': {
                 title: 'NC Portal — Non-Conformance Management System',
-                images: [
-                    'assets/nc_portal/Login Page.png',
-                    'assets/nc_portal/Dashboard Tab.png',
-                    'assets/nc_portal/Sale Entry Tab.png',
-                    'assets/nc_portal/QC Investigation Tab.png',
-                    'assets/nc_portal/QC Investigation Tab1.png',
-                    'assets/nc_portal/Monthly KPI Report .png',
-                    'assets/nc_portal/Category Breakdownn Report.png',
-                    'assets/nc_portal/Internal & External Report.png',
-                    'assets/nc_portal/Executive Report Charts.png',
-                    'assets/nc_portal/Executive Report Charts1.png',
-                    'assets/nc_portal/User Management.png'
-                ],
                 features: [
                     'Role-based Secure Login (Admin / Standard) with Per-tab Permissions',
                     'Auto-generated NC Numbers & PJC Auto-lookup from the Production Planner',
@@ -1444,21 +1381,6 @@
             document.getElementById('modalTitle').innerText = data.title;
             document.getElementById('modalTech').innerText = data.tech;
             document.getElementById('modalDetails').innerHTML = data.details;
-
-            const gallery = document.getElementById('modalGallery');
-            if (gallery) {
-                gallery.innerHTML = '';
-                if (data.images && data.images.length > 0) {
-                    data.images.forEach(imgSrc => {
-                        let img = document.createElement('img');
-                        img.src = imgSrc;
-                        gallery.appendChild(img);
-                    });
-                    gallery.style.display = 'flex';
-                } else {
-                    gallery.style.display = 'none';
-                }
-            }
 
             const featuresList = document.getElementById('modalFeatures');
             featuresList.innerHTML = '';
@@ -1489,7 +1411,6 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="modalTitle" class="modal-title">Project Title</h2>
             <div id="modalTech" class="modal-tech">Technologies</div>
-            <div id="modalGallery" class="modal-gallery" style="display: none;"></div>
             <p id="modalDetails" class="modal-details">Project details go here...</p>
             <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Key Features:</h3>
             <ul id="modalFeatures" class="modal-features">
