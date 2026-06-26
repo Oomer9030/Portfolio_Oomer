@@ -44,17 +44,29 @@
             overflow-x: hidden;
         }
 
-        /* Modern Aurora Background */
+        /* Animated Gradient Background */
         .bg-aurora {
             position: fixed;
             inset: 0;
             z-index: -3;
             overflow: hidden;
-            background:
-                radial-gradient(120% 120% at 100% 0%, #143a3a 0%, transparent 45%),
-                radial-gradient(120% 120% at 0% 100%, #102733 0%, transparent 50%),
-                var(--bg-dark);
+            background: linear-gradient(
+                -45deg, 
+                var(--bg-dark), 
+                #143a3a, 
+                #102733, 
+                var(--secondary)
+            );
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
 
         .blob {
             position: absolute;
