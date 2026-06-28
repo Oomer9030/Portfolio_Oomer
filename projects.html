@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Mohamad Oomer Habib Moussa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Oomer Habib <span>Moussa</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-hero">
+        <div class="page-hero-content">
+            <h1>Featured <span class="gradient-text" style="color:#a78bfa;-webkit-text-fill-color:#a78bfa;">Projects</span></h1>
+            <p>A collection of my Python and AI projects, including custom enterprise management software.</p>
+        </div>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag ml">SQLite</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">Material Management Pro</h3>
+                    <p class="project-description">
+                        A comprehensive desktop application for material receipt, inventory tracking, and data
+                        management. Features include SQLite database integration and customized installers.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('Material Management Pro')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Software</span>
+                        <span class="tag nlp">Planning</span>
+                        <span class="tag">Pro</span>
+                    </div>
+                    <h3 class="project-title">CombControl Planning Pro</h3>
+                    <p class="project-description">
+                        A specialized enterprise planning system built to streamline scheduling and management
+                        workflows, with robust reporting and data entry capabilities.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('CombControl Planning Pro')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Forms</span>
+                        <span class="tag nlp">Data Entry</span>
+                        <span class="tag">UI</span>
+                    </div>
+                    <h3 class="project-title">Plate Making Data Entry Form</h3>
+                    <p class="project-description">
+                        A customized interface designed for digital plate making, facilitating rapid data entry,
+                        tracking, and management for Pre-Press departments.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('Plate Making Data Entry Form')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Android</span>
+                        <span class="tag ml">Backend</span>
+                        <span class="tag nlp">Dashboard</span>
+                    </div>
+                    <h3 class="project-title">Finishing and Packing System</h3>
+                    <p class="project-description">
+                        A comprehensive full-stack solution featuring an Android application, a web dashboard, and a
+                        robust backend database to streamline and track finishing and packing operations.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('Finishing and Packing System')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">PWA</span>
+                        <span class="tag ml">JavaScript</span>
+                        <span class="tag nlp">Mobile</span>
+                    </div>
+                    <h3 class="project-title">Budget Tracker PWA</h3>
+                    <p class="project-description">
+                        A mobile-optimized Progressive Web App for tracking monthly budgets and daily expenses with
+                        offline support and local storage.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('Budget Tracker PWA')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 9: PollenAI Desktop -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag ml">FastAPI</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">PollenAI Desktop</h3>
+                    <p class="project-description">
+                        A powerful self-hosted AI assistant with multi-turn chat, autonomous deep research, RAG document
+                        retrieval, and tool ecosystems.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('PollenAI Desktop')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 10: Dashboard -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag ml">Vite</span>
+                        <span class="tag nlp">Dashboard</span>
+                    </div>
+                    <h3 class="project-title">CombControl Dashboard</h3>
+                    <p class="project-description">
+                        A modern React-based web dashboard for CombControl Planning Pro, featuring interactive charts,
+                        robust job management, and dynamic reporting.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('CombControl Dashboard')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 11: NC Portal -->
+            <div class="project-card reveal">
+                <div class="project-content">
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag ml">SQL Server</span>
+                        <span class="tag nlp">Desktop App</span>
+                    </div>
+                    <h3 class="project-title">NC Portal — Non-Conformance Management</h3>
+                    <p class="project-description">
+                        A desktop application for logging, investigating, and reporting product non-conformances
+                        end to end — from sales claim through QC investigation, closure, and KPI reporting.
+                    </p>
+                    <div class="project-links">
+                        <button onclick="openModal('NC Portal')" class="project-link">Details →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" class="modal-title">Project Title</h2>
+            <div id="modalTech" class="modal-tech">Technologies</div>
+            <div id="modalGallery" class="modal-gallery" style="display: none;"></div>
+            <p id="modalDetails" class="modal-details">Project details go here...</p>
+            <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">Key Features:</h3>
+            <ul id="modalFeatures" class="modal-features"></ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Mohamad Oomer Habib Moussa — Software &amp; AI Developer. Built with passion and code.</p>
+    </footer>
+
+    <script src="projects.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
