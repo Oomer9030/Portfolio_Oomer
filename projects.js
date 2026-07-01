@@ -133,6 +133,19 @@ const projectData = {
         ],
         tech: 'Python, CustomTkinter, MS SQL Server (pyodbc), ReportLab',
         details: 'NC Portal is an enterprise desktop application built for A World of Labels (Labelling Industries LTD) to manage product non-conformances end to end — from the moment a sales claim is raised, through QC investigation, closure, and KPI reporting. It connects directly to the company\'s Microsoft SQL Server database.<br><br>Sales staff log claims with auto-generated NC numbers and a PJC auto-lookup that pulls Client, Product No, and Total Order Quantity straight from the Production Planner. QC then records type (Internal/External), reasons, root cause, corrective and preventive actions, cost, and quantity impacted — with a "Not an NC" outcome that keeps invalid claims for audit while excluding them from KPIs. A live dashboard surfaces colour-coded status tiles, and monthly KPI reports automatically highlight any category that breaches its target. Closed NCs export as one-click official "Non Conformity Report" PDFs matching the company branding, alongside CSV exports, light/dark theming, and admin-controlled user management.'
+    },
+    'Plate Archive System': {
+        title: 'Plate Archive System',
+        features: [
+            'USB Barcode Scanning for IN/OUT Plate Tracking',
+            'Offline-first Mode with Local SQLite Cache & Automatic Sync',
+            'Code128 Label Generation in PNG, PDF, and ZPL (Zebra) Formats',
+            'Automated Flagging of Plates Unused for 2+ Years for Destruction',
+            'Dual-Database Architecture (SQL Server central + SQLite local)',
+            'Immutable, Fully Audited Transaction History with Manager-PIN Destruction'
+        ],
+        tech: 'Python, PySide6, MS SQL Server (pyodbc), SQLite, ReportLab, python-barcode',
+        details: 'Plate Archive System is a production-ready Windows desktop application for managing printing plates across their full lifecycle — from creation and daily IN/OUT movements through to an automated destruction workflow.<br><br>Operators track plates using a USB keyboard-emulation barcode scanner, with instant visual confirmation on every scan. A dual-database design keeps a central Microsoft SQL Server as the source of truth while a local SQLite cache enables full offline operation: scans are queued locally when the connection drops and sync automatically once it is restored. New plates are codified with an auto-incremented sequence (format {ClientCode}{Seq}{YearLetter}{YearYY}) and generate Code128 labels ready to print as PNG, PDF, or Zebra ZPL. A scheduled job automatically flags plates unused for two or more years for destruction, which managers review, snapshot, and confirm with a PIN — plates are marked "Destroyed" but retained for a complete, immutable audit trail. The local database is encrypted at rest via Windows DPAPI.'
     }
 };
 
