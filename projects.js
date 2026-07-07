@@ -164,6 +164,19 @@ const projectData = {
         ],
         tech: 'Python, pywebview, cryptography, SQLite, PyInstaller',
         details: 'Vault Pro is a secure, offline password generator and encrypted credential vault that provides military-grade cryptography while ensuring your data never leaves your computer.<br><br>Every credential is protected with industry-standard AES-256-GCM authenticated encryption, and your master password is strengthened through PBKDF2 key derivation with high iteration counts to resist brute-force attacks. All data lives in a locally encrypted SQLite database inside the Windows %APPDATA% directory — there is no cloud, no telemetry, and no network dependency. A built-in offline generator produces strong, fully customizable passwords on demand. The application is wrapped as a single Windows executable via PyInstaller and presents a beautiful, responsive glassmorphic interface built with HTML/CSS and Webview, distributed with a signed Inno Setup installer.'
+    },
+    'Plate ID': {
+        title: 'Plate ID — Job & Plate Management',
+        features: [
+            'Centralised Job & Plate Records on Shared MS SQL Server',
+            'Fast Server-side Search, Sorting & Paging Across Full Inventory',
+            'Bulk Import of Records from Spreadsheets',
+            'Role-based Access — Admin, Editor & Viewer Permissions',
+            'Destroy-date Tracking & Duplicate Detection for Housekeeping',
+            'DPAPI-encrypted Database Credentials & Secure Password Changes'
+        ],
+        tech: 'Python, CustomTkinter, MS SQL Server (pyodbc), Pillow, PyInstaller',
+        details: 'Plate ID is a Windows desktop application for managing printing-plate jobs and plate inventory for printing operations.<br><br>It keeps every job — customer, label reference, job type, designation, dimensions, plate counts, machine, storage location and destroy date — in one searchable, centralised Microsoft SQL Server database, so teams can track and retrieve plate records quickly and reliably. The interface is built with CustomTkinter in a clean light/blue theme, featuring fast server-side search, sorting and paging across the full inventory, and bulk import of records straight from spreadsheets. Access is governed by role-based Admin, Editor and Viewer permissions with per-account user management and secure password changes. Housekeeping is handled through destroy-date tracking and duplicate detection, while database credentials are encrypted at rest via Windows DPAPI. The app ships as a PyInstaller-built executable with an Inno Setup Windows installer.'
     }
 };
 
