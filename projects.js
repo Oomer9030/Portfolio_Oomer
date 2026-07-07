@@ -149,6 +149,11 @@ const projectData = {
     },
     'Vault Pro': {
         title: 'Vault Pro',
+        images: [
+            'assets/vault_pro/Generator.png',
+            'assets/vault_pro/Vault.png',
+            'assets/vault_pro/About.png'
+        ],
         features: [
             'AES-256-GCM Authenticated Encryption for All Credentials',
             'PBKDF2 Key Derivation with High Iteration Counts',
