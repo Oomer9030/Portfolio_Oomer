@@ -146,6 +146,19 @@ const projectData = {
         ],
         tech: 'Python, PySide6, MS SQL Server (pyodbc), SQLite, ReportLab, python-barcode',
         details: 'Plate Archive System is a production-ready Windows desktop application for managing printing plates across their full lifecycle — from creation and daily IN/OUT movements through to an automated destruction workflow.<br><br>Operators track plates using a USB keyboard-emulation barcode scanner, with instant visual confirmation on every scan. A dual-database design keeps a central Microsoft SQL Server as the source of truth while a local SQLite cache enables full offline operation: scans are queued locally when the connection drops and sync automatically once it is restored. New plates are codified with an auto-incremented sequence (format {ClientCode}{Seq}{YearLetter}{YearYY}) and generate Code128 labels ready to print as PNG, PDF, or Zebra ZPL. A scheduled job automatically flags plates unused for two or more years for destruction, which managers review, snapshot, and confirm with a PIN — plates are marked "Destroyed" but retained for a complete, immutable audit trail. The local database is encrypted at rest via Windows DPAPI.'
+    },
+    'Vault Pro': {
+        title: 'Vault Pro',
+        features: [
+            'AES-256-GCM Authenticated Encryption for All Credentials',
+            'PBKDF2 Key Derivation with High Iteration Counts',
+            'Fully Offline — Data Never Leaves Your Computer',
+            'Local Encrypted SQLite Vault Stored in %APPDATA%',
+            'Customizable Offline Strong-Password Generator',
+            'Modern Glassmorphic UI (HTML/CSS + Webview)'
+        ],
+        tech: 'Python, pywebview, cryptography, SQLite, PyInstaller',
+        details: 'Vault Pro is a secure, offline password generator and encrypted credential vault that provides military-grade cryptography while ensuring your data never leaves your computer.<br><br>Every credential is protected with industry-standard AES-256-GCM authenticated encryption, and your master password is strengthened through PBKDF2 key derivation with high iteration counts to resist brute-force attacks. All data lives in a locally encrypted SQLite database inside the Windows %APPDATA% directory — there is no cloud, no telemetry, and no network dependency. A built-in offline generator produces strong, fully customizable passwords on demand. The application is wrapped as a single Windows executable via PyInstaller and presents a beautiful, responsive glassmorphic interface built with HTML/CSS and Webview, distributed with a signed Inno Setup installer.'
     }
 };
 
